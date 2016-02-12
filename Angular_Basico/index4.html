@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="agregar">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial Angular JS</title>
+	<script src="js/angular.min.js"></script>
+</head>
+<body>
+
+	<h3>-------------------- AGREGAR A LA LISTA -------------------------------</h3>
+	
+	<div ng-controller="controller9">
+		<h2>Animales</h2>
+
+		<input id="animal" type="text" placeholder="Agregar Animal" ng-model="nuevoAnimal">
+		<button ng-click="agregar()"> Agregar </button>
+		<ul>
+			<li ng-repeat="valor in animales">
+				{{valor}}
+			</li>
+		</ul>
+
+	</div>
+	
+	<script>
+		angular.module('agregar' , [])
+
+			.controller('controller9', ['$scope', function($scope){
+				
+				$scope.animales = ['Perro' , 'Gato' , 'Loro' , 'Conejo'];
+
+				$scope.agregar = function () {
+
+					if(document.getElementById('animal').value != ''){
+						$scope.animales.push($scope.nuevoAnimal);
+						setTimeout ("alert ('Animal Ingresado');");
+						//setTimeout ("alert ('Animal Ingresado');", 1000);  Demora en aparecer 1s
+						$scope.nuevoAnimal = '';
+					}else {
+						alert("Complete el campo");
+					}
+
+				}
+
+			}]);
+
+	</script>	
+
+</body>
+</html>

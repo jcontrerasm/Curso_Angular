@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="accion">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial Angular JS</title>
+	<script src="js/angular.min.js"></script>
+</head>
+<body>
+
+	<h3>-------------------- LISTAS DINAMICAS -------------------------------</h3>
+	
+	<div ng-controller="controller3">
+		<h2>Nombres</h2>
+		<ul>
+			<li ng-repeat="valor in nombres"> <!-- "valor" es como una variable que almacena lo de nombres -->
+				{{valor}}
+			</li>
+		</ul>
+
+		<h2>Heroes</h2>
+		<ul>
+			<li ng-repeat="heroe in heroes">
+				{{heroe.nombre}} {{heroe.edad}}
+			</li>
+		</ul>
+	</div>
+	
+	<h3>-------------------- FILTRADO DE DATOS -------------------------------</h3>
+
+	<div ng-controller="controller4">
+		<h2>Agenda Telefonica</h2>
+		<input type="search" placeholder="Buscar" ng-model="busqueda">
+		<p ng-repeat="elemento in agenda | filter: busqueda">
+			{{elemento.nombre}} : {{elemento.numero}}
+		</p>
+	</div>
+	
+	<script>
+		angular.module('accion' , [])
+
+			.controller('controller3', ['$scope', function($scope){
+				
+				$scope.nombres = ['Juan' , 'Katherine' , 'Lucero' , 'Jose'];
+
+				$scope.heroes = [
+
+					{nombre: 'SpiderMan' , edad: 24},
+					{nombre: 'Batman' , edad: 30},
+					{nombre: 'SuperMan' , edad: 26},
+
+				]
+
+			}])
+
+
+			.controller('controller4', ['$scope', function($scope){
+				$scope.agenda = [
+
+					{nombre: 'Juan' , numero: 943425384},
+					{nombre: 'Daniel' , numero: 974375634},
+					{nombre: 'Lorena' , numero: 964234346},
+					{nombre: 'Lizbeth' , numero: 984948758},
+
+				]
+			}]);
+
+	</script>	
+
+</body>
+</html>

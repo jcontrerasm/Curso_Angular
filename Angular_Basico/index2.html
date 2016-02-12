@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="TutorialController">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial Angular JS</title>
+	<script src="js/angular.min.js"></script>
+</head>
+<body>
+
+	<h3>-------------------- CONTROLADORES -------------------------------</h3>
+	
+	<div ng-controller="controlador1">
+
+		<h2>Promocion de Mangos</h2>
+		<label> Cantidad: </label>
+		<input type="text" ng-model="cantidad"><br>
+		<label>Precio unitario : {{ precio | currency: '$ '}}</label><br>
+
+		<label>El precio total es de : <strong>{{ cantidad * precio | currency: '$ '}}</strong></label>
+	</div>
+	
+	<h3>-------------------- METODOS EN CONTROLADORES -------------------------------</h3>
+
+	<div ng-controller="controlador2">
+
+		<h2>Calcular Moneda en Soles</h2>
+		<label for="">Monto en Dolares : </label>
+		<input type="text" ng-model="montodolar"><br>
+		<button ng-click="calcularMonto()"> Calcular </button><br>
+
+		<label>Monto en Soles : <strong>{{ montoconvertido | currency: 'S/. '}}</strong></label>
+	</div>
+
+	
+	<script>
+		//Acceso a mi aplicacion (es como si crearas un objeto)
+		angular.module('TutorialController' , [])
+
+			//Definiendo el controlador1
+			.controller('controlador1', ['$scope', function($scope){
+
+				$scope.cantidad = 0;
+				$scope.precio = 2.5;
+
+			}])
+
+			//Definiendo el controlador2
+			.controller('controlador2', ['$scope', function($scope){
+				var cambio = 3.5;
+
+				$scope.calcularMonto = function(){
+
+					$scope.montoconvertido = $scope.montodolar * cambio;
+
+				}
+
+			}]);
+
+	</script>	
+
+</body>
+</html>

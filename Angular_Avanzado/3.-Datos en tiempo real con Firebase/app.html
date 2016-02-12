@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<input id="articulo" type="text" Placeholder="Ingrese un articulo">
+	<input type="button" onclick="agregar()" value="Agregar">
+
+	<input type="button" onclick="mostrar()" value="Mostrar">
+	<div id="vector"></div >
+	<script>
+
+		var materiales = new Array();
+
+		function agregar(){
+			var valor = document.getElementById('articulo').value.toLowerCase();
+			if(valor != ''){
+				var val_rep = validarRepetidos(valor);
+				if(val_rep == true){
+					alert("El articulo ya existe");
+					document.getElementById('articulo').value = '';
+				}else {
+					materiales.push(valor);
+					alert("Articulo agregado");
+					document.getElementById('articulo').value = '';
+				}
+			}
+		}
+
+		function validarRepetidos(valor){
+			for(var i=0 ; i < materiales.length ; i++){
+				if(valor == materiales[i]){
+					return true;
+				}
+			}
+		}
+
+		function mostrar(){
+
+			var div = document.getElementById('vector');
+
+			div.innerHTML = '';
+
+			for(var i=0 ; i < materiales.length ; i++){
+				div.innerHTML += '<li>' + '[' + i + ']' + materiales[i] + '</li>';
+			}
+
+		}
+
+	</script>	
+	
+</body>
+</html>

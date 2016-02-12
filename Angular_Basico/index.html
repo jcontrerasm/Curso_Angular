@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title>Tutorial Angular JS</title>
+		<script src="js/angular.min.js"></script>
+	</head>
+	<body>
+		<h1>Curso Angular</h1>
+		<p>{{'Bienvenido !'}}</p>
+		<p>El resultado es : {{ ( 2 + 2 + 4) * 2 }}</p>
+
+		<h3>-------------------- LISTAS -------------------------------</h3>
+
+		<ul>
+			<!-- currency convierte el numero en valor monetario -->
+
+			<li>Carro {{ 50000 | currency: '$'}}</li>
+			<li>Moto {{10000 | currency: '€'}}</li>
+			<li>Bicicleta {{60000 - 1000 | currency: 'S/.'}}</li>
+
+			<!-- Conversion de mayusculas y minusculas -->
+
+			<li>Bicicleta {{'montañera' | uppercase}}</li>
+			<li>Bicicleta {{'CARRERA' | lowercase}}</li>
+		</ul>
+
+		<h3>-------------------- DIRECTIVAS -------------------------------</h3>
+
+		<p>Las directivas son atributos que se les da a las etiquetas con
+		   valores definidos para que dentro de el se ejecute sierto proceso.<p>
+		<p>Ver ejemplo en codigo fuente<p>
+
+		<!--
+			<div ng-controller="controlador1">
+				<div ng-show="true">
+						
+				</div>
+				<div ng-click="boton1">
+						
+				</div>
+			</div>
+		-->
+
+		<h3>-------------------- MANIPULACION DE DATOS (DATA BINDING) -------------------------------</h3>
+		
+		<input type="text" placeholder="Ingrese un nombre" ng-model="nombre">
+
+		<!-- Aqui le pasas el valor del atributo -->
+
+		<h2>Mi nombre es : {{ nombre }}</h2>
+		
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="rutas">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial Angular JS</title>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular_route.js"></script>
+</head>
+<body>
+	
+	<!-- Incluyendo el header desde la ruta -->
+	<div ng-include src=" 'templates/header.html' "></div>
+
+	<div ng-view>
+		
+	</div>
+	
+	<!-- Incluyendo el menu desde la ruta -->
+	<div ng-include src=" 'templates/menu.html' "></div>
+
+	<!-- Incluyendo el footer desde la ruta -->
+	<div ng-include src=" 'templates/footer.html' "></div>
+	
+	
+	<script>
+
+		angular.module('rutas' , ['ngRoute'])
+
+			.config(['$routeProvider',function($routeProvider) {
+				$routeProvider
+					.when('/contacto' , {
+						templateUrl: 'templates/contacto.html',
+					})
+					.when('/galeria' , {
+						templateUrl: 'templates/galeria.html',
+					})
+					.when('/galeria/foto1' , {
+						templateUrl: 'templates/foto1.html',
+					})
+					.when('/galeria/foto2' , {
+						templateUrl: 'templates/foto2.html',
+					})
+					.when('/galeria/foto3' , {
+						templateUrl: 'templates/foto3.html',
+					})
+					.otherwise({
+						redirectTo: '/' ,
+						templateUrl: 'templates/inicio.html',
+					});
+			}]);
+
+	</script>	
+
+</body>
+</html>

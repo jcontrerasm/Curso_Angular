@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="incluir">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial Angular JS</title>
+	<script src="js/angular.min.js"></script>
+	<style>
+
+	.box{
+		width: 400px;
+		height: 100px;
+		border: 1px solid #56E979;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 10px;
+	}
+
+	.angular {
+		background-color: #46A6EA;
+		font-size: 1.3rem;
+		color: #5B5B5B;
+	}
+
+	</style>
+</head>
+<body>
+	
+	<!-- Incluyendo el header desde la ruta -->
+	<div ng-include src=" 'templates/header.html' "></div>
+
+	<div>
+		<p>Este es el cuerpo de la pagina</p>
+	</div>
+
+	<!-- Incluyendo el header desde la ruta -->
+	<div ng-include src=" 'templates/footer.html' "></div>
+	
+	
+	<script>
+
+		angular.module('incluir' , []);
+
+	</script>
+	
+</body>
+</html>

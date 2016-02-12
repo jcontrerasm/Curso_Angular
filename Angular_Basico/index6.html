@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="estilos">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial Angular JS</title>
+	<script src="js/angular.min.js"></script>
+
+	<style>
+
+	.box{
+		width: 400px;
+		height: 100px;
+		border: 1px solid #56E979;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 10px;
+	}
+
+	.angular {
+		background-color: #46A6EA;
+		font-size: 1.3rem;
+		color: #5B5B5B;
+	}
+
+	</style>
+</head>
+<body>
+
+	<h3>-------------------- ESTILOS CON ANGULAR -------------------------------</h3>
+
+	<div ng-controller="controller6">
+
+		<div class="box" ng-style="estilo" ng-show="estado">
+			<p>ESTE ES EL PODER DE ANGULAR JS</p>
+		</div>
+		<button ng-click="cambiarPropiedades()">
+			Aplicar estilos
+		</button>
+		<button ng-click="resetPropiedades()">
+			Resetear estilos
+		</button>
+		<button ng-click="visibilidad()">
+			{{ mensajebtn }}
+		</button> 
+
+		<br> <br>
+
+		<div class="box" ng-class="claseEspecial">
+			<p>ESTE ES EL PODER DE ANGULAR JS</p>
+		</div>
+		<button ng-click="cambiarClase()">
+			Aplicar estilos
+		</button>
+		<button ng-click="resetClase()">
+			Resetear estilos
+		</button>
+
+	</div>
+
+	<h3>-------------------- INTERCAMBIO DE IMAGENES -------------------------------</h3>
+
+	<div ng-controller="controller7">
+		<img ng-src="{{ imgActual }}" width="300" height="200">
+		<button ng-click="cambiarImagen('gallery_3.jpg')">
+			Imagen Default
+		</button>
+		<button ng-click="cambiarImagen('gallery_4.jpg')">
+			Imagen 1
+		</button>
+		<button ng-click="cambiarImagen('gallery_5.jpg')">
+			Imagen 2
+		</button>
+	</div>
+	
+	
+	<script>
+
+		angular.module('estilos' , [])
+
+			.controller('controller6', ['$scope', function($scope){
+				
+				$scope.cambiarPropiedades = function () {
+					$scope.estilo = {
+						"background-color" : "#7362F1",
+						"color" : "#FFFFFF"
+					};
+				}
+
+				$scope.resetPropiedades = function () {
+					$scope.estilo = "";
+				}
+
+				$scope.cambiarClase = function () {
+					$scope.claseEspecial = "angular";
+				}
+
+				$scope.resetClase = function () {
+					$scope.claseEspecial = "";
+				}
+
+				$scope.mensajebtn = 'Ocultar Elemento';
+				$scope.estado = true;
+
+				$scope.visibilidad = function () {
+					if($scope.estado == true){
+						$scope.estado = false;
+						$scope.mensajebtn = 'Mostrar Elemento';
+					}else {
+						$scope.estado = true;
+						$scope.mensajebtn = 'Ocultar Elemento';
+					}
+				}
+
+			}])
+
+			.controller('controller7', ['$scope', function($scope){
+				
+				$scope.imgActual = 'img/gallery/gallery_3.jpg';
+
+				$scope.cambiarImagen = function (_img) {
+					$scope.imgActual = 'img/gallery/' + _img;
+				}
+
+			}]);
+
+	</script>
+	
+</body>
+</html>

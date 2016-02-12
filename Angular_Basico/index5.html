@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="eventos">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial Angular JS</title>
+	<script src="js/angular.min.js"></script>
+</head>
+<body>
+
+	<h3>-------------------- EVENTOS -------------------------------</h3>
+	
+	<div ng-controller="controller5">
+
+		<button ng-click="click()">
+			Click
+		</button>
+
+		<button ng-dblclick="dobleclick()">
+			Doble Click
+		</button> <br> <br>
+
+		<img src="img/gallery/gallery_2.jpg" height="300" width="400" ng-mouseenter="dentro()" ng-mouseleave="fuera()">
+
+		<h2> {{evento}} </h2>
+
+	</div>
+	
+	
+	<script>
+		angular.module('eventos' , [])
+
+			.controller('controller5', ['$scope', function($scope){
+				
+				$scope.click = function () {
+					$scope.evento = "Se dio un click";
+				}
+
+				$scope.dobleclick = function (){
+					$scope.evento = "Se dio doble click";
+				}
+
+				$scope.dentro = function (){
+					$scope.evento = "El mouse esta dentro del elemento";
+				}
+
+				$scope.fuera = function (){
+					$scope.evento = "El mouse esta fuera del elemento";
+				}
+
+			}]);
+
+	</script>	
+
+</body>
+</html>
